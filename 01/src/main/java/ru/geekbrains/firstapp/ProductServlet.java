@@ -11,15 +11,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Random;
 
+@WebServlet(name = "ProductServlet", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
         for (int i = 0; i < 10; i++) {
             Random random = new Random();
 
             Product product = new Product(new Long(i)
-                    ,"product" + (i+1)
+                    ,"товар " + (i+1)
                     , new BigDecimal(random.nextInt(100))
             );
             resp.getWriter().println("<p>" + product.toString() + "</p>");
